@@ -10,7 +10,7 @@ Exports image size metrics from Azure Container Registry (`az acr`) for Promethe
 
 - Kubernetes cluster  
 - Helm v3+  
-- Azure credentials with permissions to access the ACR  
+- Azure credentials (service principal) with permissions to access the ACR  
 - Kubernetes Secret containing Azure credentials (managed outside Helm)  
 - Prometheus Operator
 - Grafana Operator
@@ -39,8 +39,7 @@ Install the chart referencing your existing secret:
 ```bash
 helm install acr-exporter oci://ghcr.io/seamex/helm/acr-exporter \
   --version 0.1.0 \
-  --set acrName=<your-acr-name> \
-  --set secretName=azure-credentials-secret
+  --set acrName=<your-acr-name>
 ```
 
 Make sure your Prometheus server is configured to scrape this endpoint.
