@@ -1,0 +1,12 @@
+services:
+  acr-exporter:
+    image: acr-exporter
+    build: .
+    ports:
+      - "9101:9101"
+    environment:
+      AZURE_CLIENT_ID: <az_client_id>
+      AZURE_CLIENT_SECRET: <az_client_secret>
+      AZURE_TENANT_ID: <az_tenant_id>
+      ACR_NAME: <acr_name>
+      REFRESH_INTERVAL: "43200"  # in seconds (60*60*12=43200 = 12h)

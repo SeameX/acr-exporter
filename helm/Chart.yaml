@@ -1,0 +1,6 @@
+apiVersion: v2
+name: acr-exporter
+description: Azure container registry (acr) prometheus exporter - Get infos about repository sizes
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

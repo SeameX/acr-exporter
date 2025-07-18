@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: acr-exporter
+  labels:
+    {{- include "acr-exporter.labels" . | nindent 4 }}
+    {{- with .Values.podMonitorAdditionalLabels}}
+    {{- toYaml . | nindent 4 }}
+    {{- end}}
+spec:
+  selector:
+    matchLabels:
+    {{- include "acr-exporter.selectorLabels" . | nindent 6 }}
+  podMetricsEndpoints:
+    - port: http
+      path: /metrics
+      interval: 60s
